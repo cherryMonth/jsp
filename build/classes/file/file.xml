@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN" "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+<package name="file" extends="struts-default" namespace="/file">
+	<action name="fileUpload" class="file.UploadAction">
+			<result name="input">/upload_1.jsp</result>
+			<result name="success">/downfile.jsp</result>
+		</action>
+	<action name="fileUploads" class="file.UploadFilesAction">
+			<result name="input">/upload_files.jsp</result>
+			<result name="success">/downfile.jsp</result>
+		</action>
+		<action name="downloadfile" class="file.DownLoadFile">
+		<result name="success" type="stream">
+		<param name="contentType">${contentType}</param>
+		<param name="inputName">target</param>
+		<param name="contentDisposition">attachment;filename="${fileName}"</param>
+		</result>
+		</action>
+</package>
+</struts>

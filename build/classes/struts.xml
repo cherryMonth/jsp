@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN" "http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
-<package name="struct1" extends="struts-default">
+<package name="struct1" extends="struts-default" namespace="/">
 <action name="login" class="org.LoginAction">
 <result name="input">/loginForm.jsp</result>  <!-- 添加输入项由于缺省引起validate会使页面重定向到输入页面并提示需要输入必须项 -->
 <result name="error">/error.jsp</result>
@@ -22,5 +22,12 @@
 <action name="*"> <!--  使content中的页面经过控制器的处理才能被访问 -->
 <result>/WEB-INF/content/{1}.jsp</result>
 </action>
+<action name="validator" class="validator.Validation">
+<result name="input">/test_xml_validator.jsp</result>  <!-- 添加输入项由于缺省引起validate会使页面重定向到输入页面并提示需要输入必须项 -->
+<result name="error">/error.jsp</result>
+<result name="success">/welcome.jsp</result>
+</action>
 </package>
+ <include file="interceptor/interceptor.xml"/>
+ <include file="file/file.xml"/>
 </struts>

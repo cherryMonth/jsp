@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC
+  		"-//Apache Struts//XWork Validator 1.0.3//EN"
+  		"http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
+<validators>
+	<field name="username">
+		<field-validator type="requiredstring">
+			<message>用户名没有输入值!</message>
+		</field-validator>
+		<field-validator type="stringlength">
+		<param name="minLength">3</param>
+		<message>用户名最短长度为3,当前为${username.length()}</message>
+		</field-validator>
+		<field-validator type="stringlength">
+		<param name="maxLength">5</param>
+		<message>用户名最长长度为5,当前为${username.length()}</message>
+		</field-validator>
+	</field>
+	<field name="passwd">
+	<field-validator type="requiredstring" short-circuit="true">
+			<message>密码没有输入值!</message>
+		</field-validator>
+	<field-validator type="stringlength" short-circuit="true">
+		<param name="minLength">3</param>
+		<message>密码最短长度为3,当前为${passwd.length()}</message>
+	</field-validator>
+	<field-validator type="fieldexpression" short-circuit="true"> <!-- 验证两次密码是否重复 -->
+		<param name="expression">passwd.equals(repass)</param>
+		<message>两次输入的密码不匹配!</message>
+	</field-validator>
+	</field>
+	<field name="repass">
+	<field-validator type="requiredstring">
+			<message>重复密码没有输入值!</message>
+		</field-validator>
+		</field>
+	<field name="age">
+		<field-validator type="int">
+			<param name="min">1</param>
+			<param name="max">100</param>
+			<message>超出范围[${min},${max}]</message>
+		</field-validator>
+	</field>
+</validators>

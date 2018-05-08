@@ -11,7 +11,7 @@
 
 <s:debug/>
 <s:i18n name="messageResource_zh_CN">
-<s:form action="Userlogin">
+<s:form action="/sec/selectLanguage">
 <s:textfield name="user.name" key="user"/>
 <s:password name="user.pass" key="pass" />
 <s:submit name="submit" key="submit" />

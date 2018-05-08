@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+    "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+  <package name="testnamespace" extends="struts-default" namespace="/sec">
+  	<interceptors>
+	   <interceptor name="assignUsername" class="interceptor.UsernameInterceptor"/>
+	  <interceptor-stack name="assignParamsStack">
+	  		<interceptor-ref name="params"/>
+	     <interceptor-ref name="assignUsername"/>
+	     <interceptor-ref name="defaultStack"/>  
+	  </interceptor-stack>
+	</interceptors>
+	
+	<default-interceptor-ref name="assignParamsStack" />  
+	<action name="InceptLogin" class="interceptor.Test">
+	<result name="login">/inceptForm.jsp</result>
+	<result name="success">/welcome.jsp</result>
+	</action>
+</package>
+</struts>
